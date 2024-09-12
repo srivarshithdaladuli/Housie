@@ -41,6 +41,9 @@ function generateNumber() {
 
   // Update history display
   updateHistory();
+
+  // Speak the generated number
+  speakNumber(number);
 }
 
 // Highlight the current number as red, previous ones green
@@ -73,6 +76,19 @@ function updateHistory() {
 // Display only the current generated number on the right
 function displayCurrentNumber(number) {
   currentNumberDisplay.innerText = number;  // Show current number in bold and large
+}
+
+// Speak the generated number
+function speakNumber(number) {
+  if ('speechSynthesis' in window) { // Check if Web Speech API is supported
+    const utterance = new SpeechSynthesisUtterance(number.toString());
+    // Optional: Set voice and rate
+    // utterance.voice = speechSynthesis.getVoices().find(voice => voice.name === "Google UK English Male"); // Example
+    // utterance.rate = 1; // Normal rate
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.log("Speech synthesis not supported in this browser.");
+  }
 }
 
 // Reset the game

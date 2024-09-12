@@ -35,7 +35,7 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   height: 400px; /* Fixed height */
   max-height: 400px; /* Ensure it does not grow beyond this height */
-  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  overflow: hidden; /* Hide overflow to prevent content from pushing out */
 }
 
 .current-number-container {
@@ -94,21 +94,16 @@ h1 {
 
 .history-container {
   margin-top: auto; /* Pushes history container to the bottom */
+  max-height: 200px; /* Fixed height for history container */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
 }
 
 .history-list {
-  font-size: 1.5em;
+  font-size: 1em; /* Normal text size, no bold */
   color: #333;
-  font-weight: bold;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.history-list span {
-  padding: 5px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns per row */
+  gap: 10px; /* Space between numbers */
 }
